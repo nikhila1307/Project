@@ -1,10 +1,11 @@
 FROM rstudio/plumber
 
-RUN R -e "install.packages(c('plumber','randomForest','jsonlite','cors'), repos='https://cloud.r-project.org/')"
-
 WORKDIR /app
+
 COPY . /app
+
+RUN R -e "install.packages(c('plumber','randomForest','jsonlite'))"
 
 EXPOSE 8000
 
-CMD ["Rscript", "api.R"]
+CMD ["R", "-e", "pr <- plumber::plumb('api.R'); pr$run(host='0.0.0.0', port=as.numeric(Sys.getenv('PORT', 8000)))"]

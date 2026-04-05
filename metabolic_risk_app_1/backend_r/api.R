@@ -90,15 +90,3 @@ function(BMI, Waist, Hip, Neck, WHR, wher, Glucose, HDL, TG, TyG, SPISE, AIP, TG
 
   list(risk = pred[,2])
 }
-
-pr <- plumber::plumb("api.R")
-
-cat("Starting API on port 8000...\n")
-
-pr$run(host = "0.0.0.0", port = 8000)
-
-# Health check
-#* @get /health
-function(){
-  list(status = "API is running")
-}
