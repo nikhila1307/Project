@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
 
-  static const baseUrl = "http://10.57.215.87:8000";
+  static const baseUrl = "https://metabolic-risk-detector.onrender.com";
 
   // -----------------------------
   // Anthropometric Model
